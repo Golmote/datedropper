@@ -445,7 +445,7 @@ $.fn.dateDropper = function( options ) {
 	
 			day.find('li').each(function(index, element) {
 
-                var
+				var
 				tod = $(this).attr('value'),
 				d = new Date(mm+"/"+tod+"/"+YY),
 				x = d.getDay(); 
@@ -457,7 +457,7 @@ $.fn.dateDropper = function( options ) {
 			});
 			
 			if(settings.years_multiple) {
-			    var
+				var
 				next = YR.next('li'),
 				prev = YR.prev('li');
 	
