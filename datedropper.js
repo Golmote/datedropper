@@ -50,6 +50,7 @@ $.fn.dateDropper = function( options ) {
 		ymultiselect = 0;
 		
 		if(!isHex) settings.color = '#f87a54';
+		if(settings.minYear>current_year) current_year = settings.minYear;
 		if(settings.maxYear<current_year) current_year = settings.maxYear;
 
 		// CREATE WRAP //
