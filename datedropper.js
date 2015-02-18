@@ -106,29 +106,29 @@ $.fn.dateDropper = function( options ) {
 		switch(settings.lang) {
 			//slovenian
 			case 'si':
-			    var monthNames = [
-			        "januar",
-			        "februar",
-			        "marec",
-			        "april",
-			        "maj",
-			        "junij",
-			        "julij",
-			        "avgust",
-			        "september",
-			        "oktober",
-			        "november",
-			        "december"
-			    ];
-			    var dayNames = [
-			        'nedelja',
-			        'ponedeljek',
-			        'torek',
-			        'sreda',
-			        'četrtek',
-			        'petek',
-			        'sobota'
-			    ];
+				var monthNames = [
+					"januar",
+					"februar",
+					"marec",
+					"april",
+					"maj",
+					"junij",
+					"julij",
+					"avgust",
+					"september",
+					"oktober",
+					"november",
+					"december"
+				];
+				var dayNames = [
+					'nedelja',
+					'ponedeljek',
+					'torek',
+					'sreda',
+					'četrtek',
+					'petek',
+					'sobota'
+				];
 				break;
 			//italian
 			case 'it': 
@@ -624,7 +624,7 @@ $.fn.dateDropper = function( options ) {
 			var x = new Date(m+"/"+d+"/"+Y);
 			x = x.getDay();
 
-            var
+			var
 			//day
 			j = d.substr(1), 					// 1-31
 			D = dayNames[x].substr(0,3), 		// Sun, Mon
@@ -666,5 +666,5 @@ $.fn.dateDropper = function( options ) {
 		});
 	
 	}
-    
+	
 };
