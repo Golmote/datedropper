@@ -48,7 +48,7 @@ $.fn.dateDropper = function( options ) {
 		isHex  		= /^#[0-9A-F]{6}$/i.test(settings.color),
 		yranger 	= function(yr) { return yr.toString().substr(0,3)+settings.years_multiple; },
 		ymultiselect = 0;
-		
+
 		if(!isHex) settings.color = '#f87a54';
 		if(settings.maxYear<current_year) current_year = settings.maxYear;
 
@@ -59,7 +59,7 @@ $.fn.dateDropper = function( options ) {
 		
 		var 
 		dd_id = $('#dd_'+drop_lenght), 
-		dd_inner = dd_id.find('.dd_');
+		dd_inner = dd_id.find('.dd_'),
 		dd_overlay = dd_id.find('.dd_overlay');
 	
 		// DATEDROPPER POSITION ON RESIZE //
@@ -97,7 +97,6 @@ $.fn.dateDropper = function( options ) {
 		var
 		month 	= dd_inner.find('.dd_m_'),
 		day 	= dd_inner.find('.dd_d_'),
-		yw 		= dd_inner.find('.dd_y_w'),
 		year 	= dd_inner.find('.dd_y_'),
 		year_r 	= dd_inner.find('.dd_r_'),
 		button 	= dd_inner.find('.dd_submit');
@@ -319,7 +318,7 @@ $.fn.dateDropper = function( options ) {
 		
 		month.find('.dd_sl_').append('<ul></ul>');
 		
-		for ( var mm = 1; mm <= 12; mm++ ) {
+		for ( var mm = 1, months; mm <= 12; mm++ ) {
 			
 			months = (monthNames[mm-1]).substr(0, 3);
 			month.find('ul').append('<li value="'+mm+'">'+months+'</li>')
@@ -330,7 +329,7 @@ $.fn.dateDropper = function( options ) {
 		
 		day.find('.dd_sl_').append('<ul></ul>');
 		
-		for ( var dd = 1; dd <= 31; dd++ ) {
+		for ( var dd = 1, ddd; dd <= 31; dd++ ) {
 			
 			if(dd<10) ddd = '0'+dd; else ddd = dd;
 			day.find('ul').append('<li value="'+dd+'">'+ddd+'<em ></em></li>')
@@ -341,7 +340,7 @@ $.fn.dateDropper = function( options ) {
 		
 		year.find('.dd_sl_').append('<ul></ul>');
 		
-		for ( var yy = settings.minYear; yy <= settings.maxYear ; yy++ ) {
+		for ( var yy = settings.minYear, bissextile_return; yy <= settings.maxYear ; yy++ ) {
 			
 			bissextile_return = bissextile(yy);
 			year.find('ul').append('<li value="'+yy+'" data-filter="'+bissextile_return+'">'+yy+'</li>')
@@ -395,7 +394,7 @@ $.fn.dateDropper = function( options ) {
 			month.find('.dd_sl_').scrollLeft(month.find('li.dd_sltd_').index()*range);
 			day.find('.dd_sl_').scrollLeft(day.find('li.dd_sltd_').index()*range);
 			year.find('.dd_sl_').scrollLeft(year.find('li.dd_sltd_').index()*range);
-		}
+		};
 		
 		
 		selectCurrent();
@@ -422,21 +421,21 @@ $.fn.dateDropper = function( options ) {
 			if(bis=='true'&&mm=='2') {
 				day.find('ul').width(29*range);
 				if(dd==30||dd==31) {
-					day.find('li').removeClass('dd_sltd_')
+					day.find('li').removeClass('dd_sltd_');
 					day.find('li[value=29]').addClass('dd_sltd_');
 				}
 			}
 			else if(bis!='true'&&mm=='2') {
 				day.find('ul').width(28*range);
 				if(dd==29||dd==30||dd==31) {
-					day.find('li').removeClass('dd_sltd_')
+					day.find('li').removeClass('dd_sltd_');
 					day.find('li[value=28]').addClass('dd_sltd_');
 				}
 			}
 			else if(mm=='11'||mm=='4'||mm=='6'||mm=='9') {
 				day.find('ul').width(30*range);
 				if(dd==31) {
-					day.find('li').removeClass('dd_sltd_')
+					day.find('li').removeClass('dd_sltd_');
 					day.find('li[value=30]').addClass('dd_sltd_');
 				}
 			}
@@ -445,10 +444,10 @@ $.fn.dateDropper = function( options ) {
 			}
 	
 			day.find('li').each(function(index, element) {
-			
-				tod = $(this).attr('value');
-	
-				d = new Date(mm+"/"+tod+"/"+YY); 
+
+                var
+				tod = $(this).attr('value'),
+				d = new Date(mm+"/"+tod+"/"+YY),
 				x = d.getDay(); 
 				
 				if(x==0) $(this).addClass('dd_sunday'); else $(this).removeClass('dd_sunday');
@@ -458,8 +457,8 @@ $.fn.dateDropper = function( options ) {
 			});
 			
 			if(settings.years_multiple) {
-			
-				next = YR.next('li');
+			    var
+				next = YR.next('li'),
 				prev = YR.prev('li');
 	
 				if(YY>=next.attr('value')) {
@@ -517,10 +516,10 @@ $.fn.dateDropper = function( options ) {
 			nav 		= $(this).find('.dd_nav_'),
 			ls			= selector.find('li.dd_sltd_').index()*range,
 			lset 		= function(){
-				scroll_left = selector.scrollLeft();
+				var scroll_left = selector.scrollLeft();
 				if(scroll_left>=ls+(range/2)) ls = ls+range;
 				if(scroll_left<=ls-(range/2)) ls = ls-range;
-			}
+			};
 			
 			$(this).hover(
 				function(){ nav.show(); },
@@ -534,7 +533,7 @@ $.fn.dateDropper = function( options ) {
 			});
 			
 			nav.click(function(){
-				
+				var obj;
 				if($(this).hasClass('dd_next_')) obj = selector.find('li.dd_sltd_').next('li');
 				else obj = selector.find('li.dd_sltd_').prev('li');
 
@@ -622,9 +621,10 @@ $.fn.dateDropper = function( options ) {
 			if(d<10) d = '0'+d;
 			if(m<10) m = '0'+m;
 			
-			x = new Date(m+"/"+d+"/"+Y); 
+			var x = new Date(m+"/"+d+"/"+Y);
 			x = x.getDay();
-			
+
+            var
 			//day
 			j = d.substr(1), 					// 1-31
 			D = dayNames[x].substr(0,3), 		// Sun, Mon
@@ -648,10 +648,10 @@ $.fn.dateDropper = function( options ) {
 			.replace(/\b(n)\b/i,n);
 
 			if(settings.lock) {
-			
-				d1d = current_day; if(d1d<10) d1d = '0'+d1d;
-				d1m = current_month+1; if(d1m<10) d1m = '0'+d1m;
-				d1y = current_year;
+
+				var d1d = current_day; if(d1d<10) d1d = '0'+d1d;
+				var d1m = current_month+1; if(d1m<10) d1m = '0'+d1m;
+				var d1y = current_year;
 				
 				var d1 = Date.parse(d1y+"-"+d1m+"-"+d1d) / 1000;
 				var d2 = Date.parse(Y+"-"+m+"-"+d) / 1000;
