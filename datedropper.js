@@ -42,7 +42,7 @@ $.fn.dateDropper = function( options ) {
 		// DECLARE VARIABLE //
 
 		input		= this,
-		drop_lenght = $('.dd_wrap').length + 1,
+		drop_length = $('.dd_wrap').length + 1,
 		bissextile	= function(yr) {return !((yr % 4) || (!(yr % 100) && (yr % 400)));}, //bissextile year
 		range 		= 100, 
 		isHex  		= /^#[0-9A-F]{6}$/i.test(settings.color),
@@ -54,11 +54,11 @@ $.fn.dateDropper = function( options ) {
 
 		// CREATE WRAP //
 		
-		$('<div class="dd_wrap" id="dd_'+drop_lenght+'"><div class="dd_overlay"></div><div class="dd_"></div></div>')
+		$('<div class="dd_wrap" id="dd_'+drop_length+'"><div class="dd_overlay"></div><div class="dd_"></div></div>')
 		.appendTo('body');
 		
 		var 
-		dd_id = $('#dd_'+drop_lenght), 
+		dd_id = $('#dd_'+drop_length), 
 		dd_inner = dd_id.find('.dd_'),
 		dd_overlay = dd_id.find('.dd_overlay');
 	
@@ -73,7 +73,7 @@ $.fn.dateDropper = function( options ) {
 		
 		// SET STYLE //
 		
-		$( "<style>#dd_"+drop_lenght+" .dd_ .dd_submit,#dd_"+drop_lenght+" .dd_ .dd_r_ ul li { background-color: "+settings.color+"; } #dd_"+drop_lenght+" .dd_ .dd_d_ .dd_sl_ ul li em , #dd_"+drop_lenght+" .dd_ .dd_d_ .dd_sl_ ul li.dd_sunday{ color: "+settings.color+"; }</style>" ).appendTo( "head" );
+		$( "<style>#dd_"+drop_length+" .dd_ .dd_submit,#dd_"+drop_length+" .dd_ .dd_r_ ul li { background-color: "+settings.color+"; } #dd_"+drop_length+" .dd_ .dd_d_ .dd_sl_ ul li em , #dd_"+drop_length+" .dd_ .dd_d_ .dd_sl_ ul li.dd_sunday{ color: "+settings.color+"; }</style>" ).appendTo( "head" );
 
 		// CREATE STRUCTURE //
 		
@@ -232,6 +232,32 @@ $.fn.dateDropper = function( options ) {
 					'Donnerstag',
 					'Freitag',
 					'Samstag'
+				];
+				break;
+			//dutch
+			case 'nl':
+				var monthNames = [
+					"januari",
+					"februari",
+					"maart",
+					"april",
+					"mei",
+					"juni",
+					"juli",
+					"augustus",
+					"september",
+					"oktober",
+					"november",
+					"december"
+				];
+				var dayNames = [
+					'zondag',
+					'maandag',
+					'dinsdag',
+					'woensdag',
+					'donderdag',
+					'vrijdag',
+					'zaterdag'
 				];
 				break;
 			//francais
